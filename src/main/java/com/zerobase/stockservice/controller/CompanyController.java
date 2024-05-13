@@ -48,7 +48,6 @@ public class CompanyController {
         }
 
         CompanyDto companyDto = this.companyService.save(ticker);
-        this.companyService.addAutocompleteKeyword(companyDto.getName());
         return ResponseEntity.ok(companyDto);
     }
 
