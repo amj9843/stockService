@@ -66,9 +66,7 @@ public class CompanyService {
     public List<String> getCompanyNamesByKeyword(String keyword) {
         Pageable limit = PageRequest.of(0, 10);
 
-        Page<Company> company = this.companyRepository.findByNameStartingWithIgnoreCase(keyword, limit);
-
-        return company.stream()
+        return this.companyRepository.findByNameStartingWithIgnoreCase(keyword, limit).stream()
                 .map(Company::getName)
                 .collect(Collectors.toList());
     }
