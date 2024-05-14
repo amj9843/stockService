@@ -3,6 +3,7 @@ package com.zerobase.stockservice.controller;
 import com.zerobase.stockservice.domain.Company;
 import com.zerobase.stockservice.dto.CompanyDto;
 import com.zerobase.stockservice.dto.constants.CacheKey;
+import com.zerobase.stockservice.exception.impl.NoParamException;
 import com.zerobase.stockservice.service.CompanyService;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.CacheManager;
@@ -44,7 +45,7 @@ public class CompanyController {
     public ResponseEntity<?> addCompany(@RequestBody CompanyDto request) {
         String ticker = request.getTicker().trim();
         if (ObjectUtils.isEmpty(ticker)) {
-            throw new RuntimeException("ticker is empty");
+            throw new NoParamException();
         }
 
         CompanyDto companyDto = this.companyService.save(ticker);

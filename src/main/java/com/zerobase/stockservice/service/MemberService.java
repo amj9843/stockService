@@ -2,6 +2,9 @@ package com.zerobase.stockservice.service;
 
 import com.zerobase.stockservice.domain.Member;
 import com.zerobase.stockservice.dto.Auth;
+import com.zerobase.stockservice.exception.impl.AlreadyExistUserException;
+import com.zerobase.stockservice.exception.impl.IncorrectPasswordException;
+import com.zerobase.stockservice.exception.impl.NoUserException;
 import com.zerobase.stockservice.repository.MemberRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,14 +25,14 @@ public class MemberService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return this.memberRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("couldn't find user -> " + username));
+                .orElseThrow(() -> new NoUserException());
     }
 
     @Transactional
     public Member register(Auth.SignUp member) {
         boolean exists = this.memberRepository.existsByUsername(member.getUsername());
         if (exists) {
-            throw new RuntimeException("이미 사용 중인 아이디 입니다.");
+            throw new AlreadyExistUserException();
         }
 
         member.setPassword(this.passwordEncoder.encode(member.getPassword()));
@@ -38,10 +41,10 @@ public class MemberService implements UserDetailsService {
 
     public Member authenticate(Auth.SignIn member) {
         Member user = this.memberRepository.findByUsername(member.getUsername())
-                .orElseThrow(() -> new RuntimeException("존재하지 않는 ID 입니다."));
+                .orElseThrow(() -> new NoUserException());
 
         if (!this.passwordEncoder.matches(member.getPassword(), user.getPassword())) {
-            throw new RuntimeException("비밀번호가 일치하지 않습니다.");
+            throw new IncorrectPasswordException();
         }
 
         return user;
