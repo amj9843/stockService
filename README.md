@@ -19,15 +19,14 @@
   <details>
   <summary>회원가입 API</summary>
   
-  - Post /signup
+  - POST /signup
   - 중복 ID는 허용하지 않음
   - 패스워드는 암호화된 형태로 저장됨
   </details>
-  <br>
   <details>
   <summary>로그인 API</summary>
 
-    - Post /signin
+    - POST /signin
     - 로그인 API
     - 회원가입이 되어있고, 아이디/패스워드가 일치하는 경우 JWT 발급
   </details>
@@ -39,7 +38,6 @@
     - GET /autocomplete
     - 검색하고자 하는 prefix를 입력값으로 받고, 해당 prefix로 검색되는 회사명 리스트 중 10개 반환
   </details>
-  <br>
   <details>
   <summary>회사 목록 확인 API</summary>
 
@@ -47,7 +45,6 @@
     - 서비스에서 관리하고 있는 모든 회사 목록을 반환
     - 반환 결과는 Page 인터페이스 형태
   </details>
-  <br>
   <details>
   <summary>회사 정보 추가 API</summary>
 
@@ -56,7 +53,6 @@
     - 이미 보유하고 있는 회사의 경우 400 status 코드와 에러메세지 반환
     - 존재하지 않는 회사 ticker일 경우 400 status 코드와 에러메세지 반환
   </details>
-  <br>
   <details>
   <summary>회사 정보 삭제 API</summary>
 
