@@ -1,6 +1,5 @@
 package com.zerobase.stockservice.domain;
 
-import com.zerobase.stockservice.dto.Auth;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
 import lombok.*;
 import org.hibernate.annotations.TypeDef;
