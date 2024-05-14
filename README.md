@@ -30,7 +30,6 @@
     - 로그인 API
     - 회원가입이 되어있고, 아이디/패스워드가 일치하는 경우 JWT 발급
   </details>
-  <br>
 - ### /company
   <details>
   <summary>회사명 검색 API</summary>
@@ -60,7 +59,6 @@
     - ticker에 해당하는 회사 정보 삭제
     - 삭제 시 회사의 배당금 정보와 캐시도 모두 삭제
   </details>
-  <br>
 - ### /finance
   <details>
   <summary>배당금 정보 확인 API</summary>
