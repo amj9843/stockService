@@ -18,12 +18,8 @@ public class Auth {
         private String password;
         private List<String> roles;
 
-        public Member toEntity() {
-            return Member.builder()
-                    .username(this.username)
-                    .password(this.password)
-                    .roles(this.roles)
-                    .build();
+        public Member toEntity(){
+            return new Member(this.username, this.password, this.roles);
         }
     }
 }

@@ -24,7 +24,7 @@ public class TokenProvider {
 
     private final MemberService memberService;
 
-    @Value("{spring.jwt.secret}")
+    @Value("${spring.jwt.secret}")
     private String secretKey;
 
     public String generateToken(String username, List<String> roles) {
