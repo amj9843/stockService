@@ -4,7 +4,7 @@
 - Intellij IDEA Community
 - Java 17
 - Gradle 7.2
-- Spring Boot 2.7.18
+- Spring Boot 2.5.6
 
 ## Tech Stack
 - Spring Boot, Spring Security, Spring Data Jpa
